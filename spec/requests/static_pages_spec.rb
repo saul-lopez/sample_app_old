@@ -9,7 +9,7 @@ describe "Static pages" do
 
     it { should have_selector('h1', text: 'Sample App') }
 
-    it { should have_selector('title', text: "#{base_title}") }
+    it { should have_selector('title', text: full_title('')) }
 
     it { should_not have_selector('title', text: '| Home') }
 
@@ -20,7 +20,7 @@ describe "Static pages" do
     subject { page }
 
     it { should have_selector('h1', text: 'Help') }
-    it { should have_selector('title', text: "#{base_title} | Help") }
+    it { should have_selector('title', text: full_title('Help')) }
 
   end
 
@@ -29,7 +29,7 @@ describe "Static pages" do
     subject { page }
 
     it { should have_selector('h1', text: 'About Us') }
-    it { should have_selector('title', text: "#{base_title} | About Us") }
+    it { should have_selector('title', text: full_title('About Us')) }
 
   end
 
@@ -37,6 +37,6 @@ describe "Static pages" do
     before { visit contact_path }
     subject { page }
     it { should have_selector('h1', text: 'Contact') }
-    it { should have_selector('title',text: "#{base_title} | Contact") }
+    it { should have_selector('title',text: full_title('Contact')) }
   end
 end
