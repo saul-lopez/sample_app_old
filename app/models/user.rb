@@ -11,6 +11,16 @@
 
 class User < ActiveRecord::Base
   attr_accessible :email, :name
+  # Hook para antes de guardar, convertir a minusculas
+  before_save { |user| user.email = email.downcase }
   validates :name, presence: true, length: { maximum: 50 }
-  validates :email, presence: true
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+  # Se valida unicidad, pero de cualquier forma es importante crear el unique a nivel base de datos
+  # ver http://ruby.railstutorial.org/chapters/modeling-users?version=3.2#sec-the_caveat
+  # El indice se crea en db/migrate/x_add_index_to_users_email
+  validates :email, presence: true, format: { with: VALID_EMAIL_REGEX  }        ,
+                    uniqueness: { case_sensitive: false }
+
+
+
 end
