@@ -15,7 +15,7 @@ class User < ActiveRecord::Base
   ## Breve explicación: http://ruby.railstutorial.org/chapters/modeling-users?version=3.2#sec-has_secure_password
   has_secure_password
   # Hook para antes de guardar, convertir a minusculas
-  before_save { |user| user.email = email.downcase }
+  before_save { self.email.downcase! }
 
   validates :name, presence: true, length: { maximum: 50 }
 
