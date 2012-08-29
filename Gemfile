@@ -26,4 +26,5 @@ group :test do
   # Permite simular interacción con la aplicación usando lenguaje natural parecido
   # al inglés.
   gem 'capybara', '1.1.2'
+  gem 'factory_girl_rails', '1.4.0'
 end
