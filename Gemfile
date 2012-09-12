@@ -8,6 +8,7 @@ gem 'bcrypt-ruby', '3.0.1'
 group :development, :test do
   # Gema para pruebas de unidad
   gem 'rspec-rails', '2.10.0'
+  gem 'spork', '0.9.0'
 end
 
 gem 'annotate', '2.5.0', group: :development
