@@ -59,8 +59,7 @@ describe "User Pages" do
   describe "edit" do
     let(:user) { FactoryGirl.create(:user) }
     before do
-      visit signin_path
-      valid_signin user
+      sign_in user
       visit edit_user_path(user)
     end
 
