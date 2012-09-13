@@ -24,6 +24,8 @@ describe "Authentication" do
     describe "with invalid information" do
       before { click_button "Sign in" }
       it { should have_selector('title', text: 'Sign in') }
+      it { should_not have_link('Profile') }
+      it { should_not have_link('Settings') }
       # Este matcher personalizado se define en spec/support/utilities.rb
       it { should have_error_message('Invalid') }
       describe "after visiting another page" do
