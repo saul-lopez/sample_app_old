@@ -139,5 +139,11 @@ describe "User Pages" do
     end
   end
 
-
+  describe "accesible attributes" do
+    it "should not allow access to admin field" do
+      expect do
+        User.new(admin: true)
+      end.to raise_error(ActiveModel::MassAssignmentSecurity::Error)
+    end
+  end
 end
