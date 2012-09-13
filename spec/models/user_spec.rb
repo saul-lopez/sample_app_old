@@ -24,11 +24,22 @@ describe User do
   it { should respond_to(:password) }
   it { should respond_to(:password_confirmation) }
   it { should respond_to(:remember_token) }
+  it { should respond_to(:admin) }
 
   # Método para autenticar usuario
   it { should respond_to(:authenticate) }
 
   it { should be_valid }
+  # Por default un usuario no debe ser admin
+  it { should_not be_admin }
+
+  describe "with admin arrtibute set to 'true'" do
+    before do
+      @user.save!
+      @user.toggle!(:admin)
+      it { should be_admin }
+    end
+  end
   describe "when name is not present" do
     before { @user.name = "     " }
     it { should_not be_valid }
