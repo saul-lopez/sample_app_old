@@ -4,6 +4,7 @@ gem 'rails', '3.2.8'
 gem 'pg', '0.12.2'
 gem 'bootstrap-sass', '2.0.0'
 gem 'bcrypt-ruby', '3.0.1'
+gem 'faker', '1.0.1'
 
 group :development, :test do
   # Gema para pruebas de unidad
