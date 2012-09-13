@@ -33,7 +33,10 @@ class UsersController < ApplicationController
   end
   private
     def signed_in_user
-      redirect_to signin_url, notice: "Please sign in" unless signed_in?
+      unless signed_in?
+        store_location
+        redirect_to signin_url, notice: "Please sign in."
+      end
       # El anterior redirect es equivalente a:
       # flash[:notice] = "Please sign in."
       # redirect_to signin_url
