@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_filter :signed_in_user, only: [:edit, :update, :index, :destroy]
+  before_filter :signed_in_user_donts, only: [:new, :create]
   before_filter :correct_user, only: [:edit, :update]
   before_filter :admin_user, only: :destroy
   def index
@@ -49,6 +50,9 @@ class UsersController < ApplicationController
       # El anterior redirect es equivalente a:
       # flash[:notice] = "Please sign in."
       # redirect_to signin_url
+    end
+    def signed_in_user_donts
+      redirect_to root_path unless !signed_in?
     end
     def correct_user
       @user = User.find(params[:id])

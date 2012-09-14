@@ -146,4 +146,18 @@ describe "User Pages" do
       end.to raise_error(ActiveModel::MassAssignmentSecurity::Error)
     end
   end
+
+  describe "signed in users should not have access to new and create" do
+    let(:user) { FactoryGirl.create(:user) }
+    before { sign_in user }
+    describe "should not allow access to new" do
+      before { get signup_path }
+      specify { response.should redirect_to(root_path) }
+    end
+    describe "should not allow access to create" do
+      before { post users_path }
+      specify { response.should redirect_to(root_path) }
+    end
+  end
+
 end
