@@ -29,6 +29,8 @@ describe User do
   # Método para autenticar usuario
   it { should respond_to(:authenticate) }
 
+  it { should respond_to(:microposts) }
+
   it { should be_valid }
   # Por default un usuario no debe ser admin
   it { should_not be_admin }

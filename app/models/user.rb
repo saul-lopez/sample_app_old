@@ -11,6 +11,8 @@
 
 class User < ActiveRecord::Base
   attr_accessible :email, :name, :password, :password_confirmation
+  has_many :microposts
+
   ## Con este metodo, automágicamente se implementa el método authenticate,
   ## Breve explicación: http://ruby.railstutorial.org/chapters/modeling-users?version=3.2#sec-has_secure_password
   has_secure_password
